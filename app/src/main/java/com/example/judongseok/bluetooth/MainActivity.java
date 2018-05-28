@@ -8,11 +8,15 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -61,7 +65,16 @@ public class MainActivity extends Activity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
             setContentView(R.layout.activity_main);
+
+            // full screen
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+            // 가로 화면으로 고정
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
 
             mEditReceive = (EditText)findViewById(R.id.receiveString);
             mEditSend = (EditText)findViewById(R.id.sendString);
@@ -214,6 +227,17 @@ public class MainActivity extends Activity {
                             Toast.makeText(getApplicationContext(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show();
                             finish();            // App 종료.
                         }
+
+
+                    }
+
+                    while (true) {
+
+                        videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+                            public void onCompletion(MediaPlayer mp){
+                                videoview.start();
+                            }
+                        });
                     }
                 }
 
