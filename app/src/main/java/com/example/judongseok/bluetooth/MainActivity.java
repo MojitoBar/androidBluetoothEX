@@ -66,14 +66,15 @@ public class MainActivity extends Activity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
-            setContentView(R.layout.activity_main);
-
             // full screen
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
             // 가로 화면으로 고정
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+            setContentView(R.layout.activity_main);
+
 
 
             mEditReceive = (EditText)findViewById(R.id.receiveString);
