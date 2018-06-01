@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -60,6 +61,7 @@ public class MainActivity extends Activity {
         Button mButtonSend;
 
         VideoView videoview;
+        TextView textview;
 
 
         @Override
@@ -205,11 +207,17 @@ public class MainActivity extends Activity {
                                                 mEditReceive.setText(data);
 
                                                 if (mEditReceive.getText().toString().equals("a")){
+                                                    mEditSend.setVisibility(View.INVISIBLE);
+                                                    mEditReceive.setVisibility(View.INVISIBLE);
+                                                    mButtonSend.setVisibility(View.INVISIBLE);
                                                     videoview.setVisibility(View.VISIBLE);
                                                     videoview.setVideoURI(Uri.parse("android.resource://com.example.judongseok.bluetooth/" + R.raw.aa));
                                                     videoview.start();
                                                 }
                                                 if (mEditReceive.getText().toString().equals("b")){
+                                                    mEditSend.setVisibility(View.INVISIBLE);
+                                                    mEditReceive.setVisibility(View.INVISIBLE);
+                                                    mButtonSend.setVisibility(View.INVISIBLE);
                                                     videoview.setVisibility(View.VISIBLE);
                                                     videoview.setVideoURI(Uri.parse("android.resource://com.example.judongseok.bluetooth/" + R.raw.bb));
                                                     videoview.start();
